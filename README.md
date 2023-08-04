@@ -145,24 +145,24 @@ If you find any of the codes helpful, kindly cite our paper.
 </pre>
 
 ## References:
-Part of the codes are referenced from  
-https://github.com/PatrickHua/SimSiam
-https://github.com/facebookresearch/deepcluster
-https://github.com/TTN-YKK/Clustering_friendly_representation_learning
-https://github.com/paudan/TimeNet
-https://github.com/cauchyturing/Deconv_SAX
-https://github.com/jsyoon0823/TimeGAN
-https://github.com/abudesai/timeVAE
-https://github.com/joergsimon/SSL-ECG-Paper-Reimplementaton
-https://github.com/mlberkeley/eeg-ssl
-https://github.com/gzerveas/mvts_transformer
-https://github.com/google-research/simclr
-https://github.com/deepmind/deepmind-research/tree/master/byol
-https://github.com/facebookresearch/CPC_audio
-https://github.com/abhinavagarwalla/swav-cifar10
-https://github.com/facebookresearch/swav
-https://github.com/salesforce/PCL
-https://github.com/mqwfrog/MHCCL
-https://github.com/yuezhihan/ts2vec
-https://github.com/emadeldeen24/TS-TCC
-https://github.com/White-Link/UnsupervisedScalableRepresentationLearningTimeSeries
+Part of the codes are referenced from    
+https://github.com/PatrickHua/SimSiam    
+https://github.com/facebookresearch/deepcluster    
+https://github.com/TTN-YKK/Clustering_friendly_representation_learning    
+https://github.com/paudan/TimeNet    
+https://github.com/cauchyturing/Deconv_SAX    
+https://github.com/jsyoon0823/TimeGAN    
+https://github.com/abudesai/timeVAE    
+https://github.com/joergsimon/SSL-ECG-Paper-Reimplementaton    
+https://github.com/mlberkeley/eeg-ssl    
+https://github.com/gzerveas/mvts_transformer    
+https://github.com/google-research/simclr    
+https://github.com/deepmind/deepmind-research/tree/master/byol    
+https://github.com/facebookresearch/CPC_audio    
+https://github.com/abhinavagarwalla/swav-cifar10    
+https://github.com/facebookresearch/swav    
+https://github.com/salesforce/PCL    
+https://github.com/mqwfrog/MHCCL    
+https://github.com/yuezhihan/ts2vec    
+https://github.com/emadeldeen24/TS-TCC    
+https://github.com/White-Link/UnsupervisedScalableRepresentationLearningTimeSeries    
