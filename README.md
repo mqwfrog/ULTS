@@ -1,8 +1,10 @@
 # ULTS
 A unified and standardized library of unsupervised representation learning approaches for time series
 
+
 ## Description of this library:
 ULTS is a unified and standardized library under the PyTorch framework to enable quick and convenient evaluations on unsupervised representation learning approaches for time series. ULTS integrates 17 representative models covering 2 deep clustering, 2 reconstruction-based and 13 self-supervised learning methods including 2 adversarial, 2 predictive and 9 contrastive ones. For more information, please refer to our paper:  [[Unsupervised Representation Learning for Time Series: A Review]](https://arxiv.org/abs/2308.01578).
+
 
 ## Abstract
 Unsupervised representation learning approaches aim to learn discriminative feature representations from unlabeled data, without the requirement of annotating every sample. Enabling unsupervised representation learning is extremely crucial for time series data, due to its unique annotation bottleneck caused by its complex characteristics and lack of visual cues compared with other data modalities. In recent years, unsupervised representation learning techniques have advanced rapidly in various domains. However, there is a lack of systematic analysis of unsupervised representation learning approaches for time series. To fill the gap, we conduct a comprehensive literature review of existing rapidly evolving unsupervised representation learning approaches for time series. Moreover, we also develop a unified and standardized library, named ULTS ({i.e., Unsupervised Learning for Time Series), to facilitate fast implementations and unified evaluations on various models. With ULTS, we empirically evaluate state-of-the-art approaches, especially the rapidly evolving contrastive learning methods, on 9 diverse real-world datasets. We further discuss practical considerations as well as open research challenges on unsupervised representation learning for time series to facilitate future research in this field.
@@ -10,10 +12,11 @@ Unsupervised representation learning approaches aim to learn discriminative feat
 ## Taxonomy:
 ![image](https://github.com/mqwfrog/ULTS/blob/main/taxonomy.png)
 
+
 ## Organization:
 ![image](https://github.com/mqwfrog/ULTS/blob/main/organization.png)
   
-## Models Implemented in ULTS
+## Models Implemented in ULTS:
 <table>
     <tr>
         <td>1st Category</td>
@@ -103,7 +106,7 @@ Unsupervised representation learning approaches aim to learn discriminative feat
 - The [MTS](http://www.mustafabaydogan.com/multivariate-time-series-discretization-for-classification.html) archive, also known as Baydogan's archive, includes 13 multivariate time series datasets, covers the application fields of audio spectra classification, ECG classification, human activity recognition, motion classification, etc. 
 
 
-## Code:
+## Codes:
 The codes in ULTS library are organized as follows:
 - The [main.py](https://github.com/mqwfrog/ULTS/blob/main/main.py) includes the training method for all models.
 - The [models](https://github.com/mqwfrog/ULTS/tree/main/models) folder contain all 17 unsupervised learning models.
@@ -130,17 +133,36 @@ python main.py \
 ## Citation:
 If you find any of the codes helpful, kindly cite our paper.   
 
-@misc{meng2023unsupervised,
+<pre>
+@misc{meng2023unsupervised, 
       title={Unsupervised Representation Learning for Time Series: A Review}, 
-      author={Qianwen Meng and Hangwei Qian and Yong Liu and Yonghui Xu and Zhiqi Shen and Lizhen Cui},
+      author={Qianwen Meng and Hangwei Qian and Yong Liu and Yonghui Xu and Zhiqi Shen and Lizhen Cui},   
       year={2023},
       eprint={2308.01578},
       archivePrefix={arXiv},
       primaryClass={cs.LG}
 }
-
+</pre>
 
 ## References:
 Part of the codes are referenced from  
 https://github.com/PatrickHua/SimSiam
-
+https://github.com/facebookresearch/deepcluster
+https://github.com/TTN-YKK/Clustering_friendly_representation_learning
+https://github.com/paudan/TimeNet
+https://github.com/cauchyturing/Deconv_SAX
+https://github.com/jsyoon0823/TimeGAN
+https://github.com/abudesai/timeVAE
+https://github.com/joergsimon/SSL-ECG-Paper-Reimplementaton
+https://github.com/mlberkeley/eeg-ssl
+https://github.com/gzerveas/mvts_transformer
+https://github.com/google-research/simclr
+https://github.com/deepmind/deepmind-research/tree/master/byol
+https://github.com/facebookresearch/CPC_audio
+https://github.com/abhinavagarwalla/swav-cifar10
+https://github.com/facebookresearch/swav
+https://github.com/salesforce/PCL
+https://github.com/mqwfrog/MHCCL
+https://github.com/yuezhihan/ts2vec
+https://github.com/emadeldeen24/TS-TCC
+https://github.com/White-Link/UnsupervisedScalableRepresentationLearningTimeSeries
