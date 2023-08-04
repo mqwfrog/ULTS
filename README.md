@@ -22,7 +22,7 @@ Unsupervised representation learning approaches aim to learn discriminative feat
         <td>1st Category</td>
         <td>2nd Category</td>
         <td>3rd Category</td>
-        <td>Model</td>
+        <td>Model (Official Implementations) </td>
     </tr>
     <tr>
         <td rowspan="2">Deep Clustering Methods</td>
