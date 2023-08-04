@@ -23,13 +23,11 @@ class train_TSTCC():
         # Args selections
         self.start_time = datetime.now()
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.experiment_description = self.args.experiment_description
-        self.data_type = self.args.selected_dataset
-        self.dataset_name = self.data_type
-        self.method = 'TS-TCC'
+        self.dataset_name = self.args.dataset_name
+        self.method = 'TSTCC'
+        self.experiment_description = self.method
         self.training_mode = self.args.training_mode
-        self.run_description = self.args.run_description
-        self.logs_save_dir = self.args.logs_save_dir
+        self.logs_save_dir = self.args.exp_dir
         # ##### random seeds for reproducibility ########
         self.SEED = self.args.seed
 
@@ -76,8 +74,7 @@ class train_TSTCC():
         torch.backends.cudnn.benchmark = False
         np.random.seed(self.SEED)
 
-        experiment_log_dir = os.path.join(self.logs_save_dir, self.experiment_description, self.run_description,
-                                          self.training_mode + f"_seed_{self.SEED}")
+        experiment_log_dir = os.path.join(self.logs_save_dir, self.experiment_description, self.training_mode + f"_seed_{self.SEED}")
         os.makedirs(experiment_log_dir, exist_ok=True)
 
         # loop through domains
@@ -107,7 +104,7 @@ class train_TSTCC():
         if self.training_mode == "fine_tune":
         # load saved model of this experiment
             load_from = os.path.join(
-                os.path.join(self.logs_save_dir, self.experiment_description, self.run_description, f"self_supervised_seed_{self.SEED}",
+                os.path.join(self.logs_save_dir, self.experiment_description, f"self_supervised_seed_{self.SEED}",
                              "saved_models"))
             chkpoint = torch.load(os.path.join(load_from, "ckp_last.pt"), map_location=self.device)
             pretrained_dict = chkpoint["model_state_dict"]
@@ -123,7 +120,7 @@ class train_TSTCC():
 
         if self.training_mode == "train_linear" or "tl" in self.training_mode:
             load_from = os.path.join(
-                os.path.join(self.logs_save_dir, self.experiment_description, self.run_description, f"self_supervised_seed_{self.SEED}",
+                os.path.join(self.logs_save_dir, self.experiment_description, f"self_supervised_seed_{self.SEED}",
                              "saved_models"))
             chkpoint = torch.load(os.path.join(load_from, "ckp_last.pt"), map_location=self.device)
             pretrained_dict = chkpoint["model_state_dict"]
@@ -161,7 +158,7 @@ class train_TSTCC():
                                                         betas=(configs.beta1, configs.beta2), weight_decay=3e-4)
 
         if self.training_mode == "self_supervised":  # to do it only once
-            copy_Files(os.path.join(self.logs_save_dir, self.experiment_description, self.run_description), self.data_type)
+            copy_Files(os.path.join(self.logs_save_dir, self.experiment_description), self.data_type)
 
             # Trainer
             # Trainer(model, temporal_contr_model, model_optimizer, temporal_contr_optimizer, train_dl, valid_dl, test_dl, device, logger, configs, experiment_log_dir, training_mode)
