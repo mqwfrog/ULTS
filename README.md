@@ -3,7 +3,7 @@ A unified and standardized library of unsupervised representation learning appro
 
 
 ## Description of this library:
-ULTS is a unified and standardized library under the PyTorch framework to enable quick and convenient evaluations on unsupervised representation learning approaches for time series. ULTS integrates 17 representative models covering 2 deep clustering, 2 reconstruction-based and 13 self-supervised learning methods including 2 adversarial, 2 predictive and 9 contrastive ones. For more information, please refer to our paper:  [[Unsupervised Representation Learning for Time Series: A Review]](https://arxiv.org/abs/2308.01578).
+ULTS is a unified and standardized library under the PyTorch framework to enable quick and convenient evaluations on unsupervised representation learning approaches for time series. ULTS integrates 17 representative models covering 2 deep clustering, 2 reconstruction-based and 13 self-supervised learning methods including 2 adversarial, 2 predictive and 9 contrastive ones. For more information, please refer to our paper:  [Unsupervised Representation Learning for Time Series: A Review](https://arxiv.org/abs/2308.01578).
 
 
 ## Abstract
