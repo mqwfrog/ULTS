@@ -23,11 +23,12 @@ class train_TSTCC():
         # Args selections
         self.start_time = datetime.now()
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.dataset_name = self.args.dataset_name
-        self.method = 'TSTCC'
-        self.experiment_description = self.method
+        self.experiment_description = self.args.experiment_description
+        self.dataset_name  = self.args.dataset_name
+        self.method = 'TS-TCC'
         self.training_mode = self.args.training_mode
-        self.logs_save_dir = self.args.exp_dir
+        self.run_description = self.args.run_description
+        self.logs_save_dir = self.args.logs_save_dir
         # ##### random seeds for reproducibility ########
         self.SEED = self.args.seed
 
@@ -65,7 +66,7 @@ class train_TSTCC():
     def excute(self):
         os.makedirs(self.logs_save_dir, exist_ok=True)
 
-        exec(f'from config_files.{self.data_type}_Configs import Config')
+        exec(f'from config_files.{self.dataset_name}_Configs import Config')
         configs = Config()  
 
         print(self.SEED)
@@ -74,7 +75,8 @@ class train_TSTCC():
         torch.backends.cudnn.benchmark = False
         np.random.seed(self.SEED)
 
-        experiment_log_dir = os.path.join(self.logs_save_dir, self.experiment_description, self.training_mode + f"_seed_{self.SEED}")
+        experiment_log_dir = os.path.join(self.logs_save_dir, self.experiment_description, self.run_description,
+                                          self.training_mode + f"_seed_{self.SEED}")
         os.makedirs(experiment_log_dir, exist_ok=True)
 
         # loop through domains
@@ -85,13 +87,13 @@ class train_TSTCC():
         log_file_name = os.path.join(experiment_log_dir, f"logs_{datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.log")
         logger = _logger(log_file_name)
         logger.debug("=" * 45)
-        logger.debug(f'Dataset: {self.data_type}')
+        logger.debug(f'Dataset: {self.dataset_name}')
         logger.debug(f'Method:  {self.method}')
         logger.debug(f'Mode:    {self.training_mode}')
         logger.debug("=" * 45)
 
         # Load datasets
-        data_path = f"./data/{self.data_type}"
+        data_path = f"./data/{self.dataset_name}"
         # train_dl, valid_dl, test_dl = data_generator(data_path, configs, training_mode)
         train_dl, test_dl = data_generator(data_path, configs, self.training_mode)
         # print(train_dl)
@@ -104,7 +106,7 @@ class train_TSTCC():
         if self.training_mode == "fine_tune":
         # load saved model of this experiment
             load_from = os.path.join(
-                os.path.join(self.logs_save_dir, self.experiment_description, f"self_supervised_seed_{self.SEED}",
+                os.path.join(self.logs_save_dir, self.experiment_description, self.run_description, f"self_supervised_seed_{self.SEED}",
                              "saved_models"))
             chkpoint = torch.load(os.path.join(load_from, "ckp_last.pt"), map_location=self.device)
             pretrained_dict = chkpoint["model_state_dict"]
@@ -120,7 +122,7 @@ class train_TSTCC():
 
         if self.training_mode == "train_linear" or "tl" in self.training_mode:
             load_from = os.path.join(
-                os.path.join(self.logs_save_dir, self.experiment_description, f"self_supervised_seed_{self.SEED}",
+                os.path.join(self.logs_save_dir, self.experiment_description, self.run_description, f"self_supervised_seed_{self.SEED}",
                              "saved_models"))
             chkpoint = torch.load(os.path.join(load_from, "ckp_last.pt"), map_location=self.device)
             pretrained_dict = chkpoint["model_state_dict"]
@@ -158,7 +160,7 @@ class train_TSTCC():
                                                         betas=(configs.beta1, configs.beta2), weight_decay=3e-4)
 
         if self.training_mode == "self_supervised":  # to do it only once
-            copy_Files(os.path.join(self.logs_save_dir, self.experiment_description), self.data_type)
+            copy_Files(os.path.join(self.logs_save_dir, self.experiment_description, self.run_description), self.dataset_name)
 
             # Trainer
             # Trainer(model, temporal_contr_model, model_optimizer, temporal_contr_optimizer, train_dl, valid_dl, test_dl, device, logger, configs, experiment_log_dir, training_mode)
@@ -169,7 +171,7 @@ class train_TSTCC():
             # Testing
                 outs = model_evaluate(model, temporal_contr_model, test_dl, self.device, self.training_mode)
             total_loss, total_acc, pred_labels, true_labels, representations = outs  # mqw
-            _calc_metrics(pred_labels, true_labels, experiment_log_dir, self.args.home_path, self.data_type)
+            _calc_metrics(pred_labels, true_labels, experiment_log_dir, self.args.home_path, self.dataset_name)
 
             ### TSNE Embeddings of representations
             print('Starting to compute t-SNE Embeddings...')
