@@ -99,13 +99,19 @@ parser.add_argument("--use_fp16", type=bool_flag, default=True,
 parser.add_argument("--sync_bn", type=str, default="pytorch", help="synchronize bn")
 
 # PCL
-parser.add_argument('--master-port', type=str, default='29501',
+parser.add_argument('--master_port', type=str, default='29501',
                     help='avoid address already in use')
-parser.add_argument('--multiprocessing-distributed', action='store_true',
+parser.add_argument('--schedule', default=[120, 160], nargs='*', type=int,
+                    help='learning rate schedule (when to drop lr by 10x)')
+parser.add_argument('--print_freq', default=100, type=int,
+                    metavar='N', help='print frequency (default: 10)')
+parser.add_argument('--multiprocessing_distributed', action='store_true',
                     help='Use multi-processing distributed training to launch '
                          'N processes per node, which has N GPUs. This is the '
                          'fastest way to use PyTorch for either single node or '
                          'multi node data parallel training')
+parser.add_argument('--dist_backend', default='nccl', type=str,
+                    help='distributed backend')
 parser.add_argument('--pcl_r', default=4, type=int,
                     help='queue size; number of negative pairs; needs to be smaller than num_cluster (default: 16384)')
 parser.add_argument('--momentum', default=0.9, type=float, metavar='M',
@@ -114,8 +120,6 @@ parser.add_argument('--moco_m', default=0.999, type=float,
                     help='moco momentum of updating key encoder (default: 0.999)')
 parser.add_argument('--mlp', action='store_true',
                     help='use mlp head')
-parser.add_argument('--aug_plus', action='store_true',
-                    help='use moco-v2/SimCLR data augmentation')
 parser.add_argument('--cos', action='store_true',
                     help='use cosine lr schedule')
 parser.add_argument('--num_cluster', default='6,12,24', type=str,
@@ -164,11 +168,11 @@ parser.add_argument('--proportion', default=0.5, type=float,
 # TS2Vec
 parser.add_argument('--archive', type=str, required=True, help='The archive name that the dataset belongs to. This can be set to UCR, UEA, forecast_csv, or forecast_csv_univar')
 parser.add_argument('--max_train_length', type=int, default=3000, help='For sequence with a length greater than <max_train_length>, it would be cropped into some sequences, each of which has a length less than <max_train_length> (defaults to 3000)')
-    parser.add_argument('--iters', type=int, default=None, help='The number of iterations')
+parser.add_argument('--iters', type=int, default=None, help='The number of iterations')
 parser.add_argument('--save_every', type=int, default=None, help='Save the checkpoint every <save_every> iterations/epochs')
 parser.add_argument('--max_threads', type=int, default=None, help='The maximum allowed number of threads used by this process')
-    parser.add_argument('--eval', action="store_true", help='Whether to perform evaluation after training')
-    parser.add_argument('--irregular', type=float, default=0, help='The ratio of missing observations (defaults to 0)')
+parser.add_argument('--eval', action="store_true", help='Whether to perform evaluation after training')
+parser.add_argument('--irregular', type=float, default=0, help='The ratio of missing observations (defaults to 0)')
 
 
 # TLoss
