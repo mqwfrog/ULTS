@@ -110,13 +110,22 @@ The codes in ULTS library are organized as follows:
 - The [data_preprocess](https://github.com/mqwfrog/ULTS/tree/main/data_preprocess) folder contain the codes to preprocess data from different archives.
 - The [data_loader](https://github.com/mqwfrog/ULTS/tree/main/data_loader) folder contains the codes to perform augmentation transformations and to load the dataset.
 
-## Running:
+## To perform unsupervised representation learning, please refer to the options below:
 <pre>
 python main.py \
---dataset HAR \
---model simclr
+--dataset_name wisdm \
+--uid SimCLR
 --lr 0.03 \
 --batch_size 128 \
+--feature_size 128
+</pre>
+
+## To perform downstream classification task based on the learned representations, please refer to the options below:
+python classifier.py \
+--dataset_name wisdm \
+--pretrained experiment_wisdm/checkpoint_0149.pth.tar \
+--lr 5 --batch_size 128 \
+--id wisdm_linear_0149
 </pre>
 
 
