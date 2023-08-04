@@ -121,6 +121,7 @@ python main.py \
 </pre>
 
 ## To perform downstream classification task based on the learned representations, please refer to the options below:
+<pre>
 python classifier.py \
 --dataset_name wisdm \
 --pretrained experiment_wisdm/checkpoint_0149.pth.tar \
