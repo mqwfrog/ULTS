@@ -110,7 +110,8 @@ The codes in ULTS library are organized as follows:
 - The [data_preprocess](https://github.com/mqwfrog/ULTS/tree/main/data_preprocess) folder contain the codes to preprocess data from different archives.
 - The [data_loader](https://github.com/mqwfrog/ULTS/tree/main/data_loader) folder contains the codes to perform augmentation transformations and to load the dataset.
 
-## To perform unsupervised representation learning, please refer to the options below:
+
+## Running:
 <pre>
 python main.py \
 --dataset_name wisdm \
@@ -120,19 +121,10 @@ python main.py \
 --feature_size 128
 </pre>
 
-## To perform downstream classification task based on the learned representations, please refer to the options below:
-<pre>
-python classifier.py \
---dataset_name wisdm \
---pretrained experiment_wisdm/checkpoint_0149.pth.tar \
---lr 5 --batch_size 128 \
---id wisdm_linear_0149
-</pre>
 
 
 ## Results:
 - The experimental results will be saved in "experiment_{args.model}_{args.dataset}" directory by default.
-
 
 
 ## Citation:
