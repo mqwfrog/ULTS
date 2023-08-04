@@ -2,7 +2,7 @@
 A unified and standardized library of unsupervised representation learning approaches for time series
 
 ## Description of this library:
-ULTS is a unified and standardized library under the PyTorch framework to enable quick and convenient evaluations on unsupervised representation learning approaches for time series. ULTS integrates 17 representative models covering 2 deep clustering, 2 reconstruction-based and 13 self-supervised learning methods including 2 adversarial, 2 predictive and 9 contrastive ones. For more information, please refer to our paper:  [[Unsupervised Representation Learning for Time Series: A Review]](https://arxiv.org/abs/).
+ULTS is a unified and standardized library under the PyTorch framework to enable quick and convenient evaluations on unsupervised representation learning approaches for time series. ULTS integrates 17 representative models covering 2 deep clustering, 2 reconstruction-based and 13 self-supervised learning methods including 2 adversarial, 2 predictive and 9 contrastive ones. For more information, please refer to our paper:  [[Unsupervised Representation Learning for Time Series: A Review]](https://arxiv.org/abs/2308.01578).
 
 ## Abstract
 Unsupervised representation learning approaches aim to learn discriminative feature representations from unlabeled data, without the requirement of annotating every sample. Enabling unsupervised representation learning is extremely crucial for time series data, due to its unique annotation bottleneck caused by its complex characteristics and lack of visual cues compared with other data modalities. In recent years, unsupervised representation learning techniques have advanced rapidly in various domains. However, there is a lack of systematic analysis of unsupervised representation learning approaches for time series. To fill the gap, we conduct a comprehensive literature review of existing rapidly evolving unsupervised representation learning approaches for time series. Moreover, we also develop a unified and standardized library, named ULTS ({i.e., Unsupervised Learning for Time Series), to facilitate fast implementations and unified evaluations on various models. With ULTS, we empirically evaluate state-of-the-art approaches, especially the rapidly evolving contrastive learning methods, on 9 diverse real-world datasets. We further discuss practical considerations as well as open research challenges on unsupervised representation learning for time series to facilitate future research in this field.
@@ -128,14 +128,14 @@ python main.py \
 ## Citation:
 If you find any of the codes helpful, kindly cite our paper.   
 
-@misc{,  
-    title={},  
-    author={},  
-    year={},  
-    eprint={},  
-    archivePrefix={arXiv},  
-    primaryClass={cs.LG}  
-}  
+@misc{meng2023unsupervised,
+      title={Unsupervised Representation Learning for Time Series: A Review}, 
+      author={Qianwen Meng and Hangwei Qian and Yong Liu and Yonghui Xu and Zhiqi Shen and Lizhen Cui},
+      year={2023},
+      eprint={2308.01578},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
 
 
 ## References:
