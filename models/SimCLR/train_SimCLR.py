@@ -14,7 +14,7 @@ from utils import *
 from loss import *
 
 from torch.utils.data.dataloader import DataLoader  
-from .data_loader.dataset_loader import data_generator 
+from ..data_loader.dataset_loader import data_generator 
 
 class train_SimCLR():
 
