@@ -44,25 +44,17 @@ class BYOLTrainer:
             param_k.requires_grad = False  # not update by gradient
 
     def train(self, train_dataset):
-
-        # train_loader = DataLoader(train_dataset, batch_size=self.batch_size,
-        #                           num_workers=self.num_workers, drop_last=False, shuffle=True)
-        train_loader = train_dataset #mqw
+        train_loader = train_dataset
 
         niter = 0
         model_checkpoints_folder = os.path.join(self.writer.log_dir, 'checkpoints')
 
         self.initializes_target_network()
 
-        # for epoch_counter in range(self.max_epochs):
-            # for (batch_view_1, batch_view_2), _ in train_loader:
-                # batch_view_1 = batch_view_1.to(self.device)
-                # batch_view_2 = batch_view_2.to(self.device)
-
-        for batch_idx, (data, target, batch_view_1, batch_view_2) in enumerate(train_loader):#mqw
+        for batch_idx, (data, target, batch_view_1, batch_view_2) in enumerate(train_loader):
                 print(f"train_loader_len:{len(train_loader)}")
-                data, target = data.float().to(self.device), target.long().to(self.device)#mqw
-                batch_view_1, batch_view_2 = batch_view_1.float().to(self.device), batch_view_2.float().to(self.device) #mqw
+                data, target = data.float().to(self.device), target.long().to(self.device)
+                batch_view_1, batch_view_2 = batch_view_1.float().to(self.device), batch_view_2.float().to(self.device)
                 batch_view_1= batch_view_1.unsqueeze(3)
                 batch_view_2 = batch_view_2.unsqueeze(3)
                 # if niter == 0:
@@ -81,9 +73,6 @@ class BYOLTrainer:
                 self.optimizer.step()
 
                 self._update_target_network_parameters()  # update the key encoder
-                # niter += 1
-
-            # print("End of epoch {}".format(epoch_counter))
 
         # save checkpoints
         self.save_model(os.path.join(model_checkpoints_folder, 'model.pth'))
