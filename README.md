@@ -158,6 +158,7 @@ https://github.com/mlberkeley/eeg-ssl
 https://github.com/gzerveas/mvts_transformer    
 https://github.com/google-research/simclr    
 https://github.com/deepmind/deepmind-research/tree/master/byol    
+https://github.com/lucidrains/byol-pytorch    
 https://github.com/facebookresearch/CPC_audio    
 https://github.com/abhinavagarwalla/swav-cifar10    
 https://github.com/facebookresearch/swav    
