@@ -32,12 +32,11 @@ import framework
 
 
 class train_MHCCL():
-
 	def __init__(self,parser):
-    	self.args = parser.parse_args()
-        self.method = 'MHCCL'
-        self.dataset_name = self.args.dataset_name
-        self.master_port = self.args.master_port
+	    	self.args = parser.parse_args()
+	        self.method = 'MHCCL'
+	        self.dataset_name = self.args.dataset_name
+	        self.master_port = self.args.master_port
 		self.workers = self.args.workers
 		self.epochs = self.args.epochs
 		self.start_epoch = self.args.start_epoch
