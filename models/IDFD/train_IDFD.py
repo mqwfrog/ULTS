@@ -21,7 +21,7 @@ from ..data_loader.dataset_loader import data_generator
 class train_IDFD():
 
     def __init__(self, parser):
-        self.args = argparse.ArgumentParser()
+        self.args = parser.parse_args()
         self.method = 'IDFD'
         self.dataset_name = self.args.dataset_name
         self.epochs = self.args.epochs
